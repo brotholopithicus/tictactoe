@@ -20,6 +20,11 @@ export class UI {
     }
     switchViewTo(player) {
         let turn = document.querySelector('.turn');
+        let board = document.querySelector('.board');
+        board.style.opacity = 1;
+        if (player === 'won' || player === 'lost' || player === 'draw') {
+            board.style.opacity = 0.2;
+        }
         switch (player) {
             case 'human':
                 turn.textContent = `It's your turn.`;
