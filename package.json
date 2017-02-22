@@ -12,7 +12,7 @@
         "watchify": "^3.9.0"
     },
     "scripts": {
-        "bundle": "browserify src/index.js -t [babelify] -o dist/bundle.js",
-        "watch": "watchify src/index.js -t [babelify] -t [uglifyify] -o dist/bundle.js"
+        "bundle": "browserify src/index.js -t [babelify] -t [uglifyify] -o dist/bundle.js",
+        "watch": "watchify src/index.js -t [babelify] -o dist/bundle.js"
     }
 }

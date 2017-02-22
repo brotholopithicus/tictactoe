@@ -3,9 +3,13 @@
 }
 
 body {
+    height: 60vh;
     margin: 0px;
     padding: 0px;
     background-color: #042d41;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 button {
@@ -18,7 +22,6 @@ button {
     color: #fff;
     cursor: pointer;
 }
-
 
 .main {
     margin-top: 2em;
