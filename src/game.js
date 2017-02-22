@@ -21,7 +21,6 @@ export class Game {
         if (nextState.isTerminal()) {
             // the game is over
             this.status = 'gameover';
-            document.querySelector('#restart').style.display = '';
             if (nextState.result === 'X-wins') {
                 // X wins
                 this.ui.switchViewTo('won');
