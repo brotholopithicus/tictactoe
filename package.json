@@ -1,0 +1,18 @@
+{
+    "name": "tictactoe",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "babel-preset-latest": "^6.22.0",
+        "babelify": "^7.3.0",
+        "browserify": "^14.1.0",
+        "uglifyify": "^3.0.4",
+        "watchify": "^3.9.0"
+    },
+    "scripts": {
+        "bundle": "browserify src/index.js -t [babelify] -o dist/bundle.js",
+        "watch": "watchify src/index.js -t [babelify] -t [uglifyify] -o dist/bundle.js"
+    }
+}
