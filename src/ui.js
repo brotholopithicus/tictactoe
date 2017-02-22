@@ -23,26 +23,23 @@ export class UI {
         switch (player) {
             case 'human':
                 turn.textContent = `It's your turn.`;
-                console.log('human turn');
+                turn.style.color = '#00f0ff';
                 break;
             case 'robot':
                 turn.textContent = `AI player turn.`;
-                console.log('robot turn');
+                turn.style.color = '#ff53ba';
                 break;
             case 'won':
                 turn.textContent = `You win! Play again?`;
                 turn.style.color = 'blue';
-                console.log('human wins');
                 break;
             case 'lost':
                 turn.textContent = `You lost! Play again?`;
                 turn.style.color = 'red';
-                console.log('human lost');
                 break;
             case 'draw':
                 turn.textContent = `It's a tie! Play again?`;
                 turn.style.color = 'white';
-                console.log('it\'s a draw...');
                 break;
             default:
                 turn.textContent = `Something is broken.`;
