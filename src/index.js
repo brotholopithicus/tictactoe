@@ -11,8 +11,8 @@ function startGame() {
         cell.textContent = '';
     });
     // let difficulty = 'easy';
-    let difficulty = 'normal';
-    // let difficulty = 'hard';
+    // let difficulty = 'normal';
+    let difficulty = 'hard';
     let game = new Game(difficulty);
     game.start();
 }
