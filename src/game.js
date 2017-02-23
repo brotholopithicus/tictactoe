@@ -1,3 +1,4 @@
+import { createComponent } from './libs/component';
 import { State } from './state';
 import { AI } from './ai';
 import { UI } from './ui';
@@ -15,7 +16,19 @@ export class Game {
         this.playerSymbol = playerSymbol;
         // this.aiSymbol = playerSymbol === '✖' ? '⭗' : '✖';
         this.aiSymbol = playerSymbol === 'X' ? 'O' : 'X';
-        this.ui = new UI(this);
+        // this.ui = new UI(this);
+    }
+    // create game board
+    initializeBoard() {
+        let main = document.createElement('div');
+        main.classList.add('main');
+        let board = createComponent('div', main, { classes: ['board'], styles: [{ key: 'opacity', value: 1 }] });
+        for (let i = 0; i < 9; i++) {
+            createComponent('div', board, { classes: ['cell'], data: [{ key: 'index', value: i }] });
+        }
+        let turn = createComponent('div', main, { classes: ['turn'] });
+        let button = createComponent('button', main, { id: 'restart', attributes: [{ key: 'disabled', value: true }], text: 'Restart' });
+        document.body.appendChild(main);
     }
     // advance game to new state
     advanceState(nextState) {

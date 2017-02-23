@@ -1,13 +1,17 @@
 import { State } from './state';
 export class UI {
-    constructor(game) {
+    constructor(game, cells) {
         this.game = game;
-        this.cells = document.querySelectorAll('.cell');
+        this.cells = cells;
         this.addClickListeners();
     }
     addClickListeners() {
         this.cells.forEach(cell => cell.addEventListener('click', this.cellClickHandler.bind(this)));
-        this.cells.forEach(cell => cell.addEventListener('touchstart', this.cellClickHandler.bind(this)));
+        this.cells.forEach(cell => cell.addEventListener('touchstart', this.cellTouchHandler.bind(this)));
+    }
+    cellTouchHandler(e) {
+        e.preventDefault();
+        this.cellClickHandler(e);
     }
     cellClickHandler(e) {
         if (this.game.status === 'running' && this.game.currentState.turn === 'X' && !e.target.classList.contains('occupied')) {
