@@ -6,7 +6,7 @@ export class UI {
         this.addClickListeners();
     }
     addClickListeners() {
-        this.cells.forEach(cell => cell.addEventListener('mousedown', this.cellClickHandler.bind(this)));
+        this.cells.forEach(cell => cell.addEventListener('click', this.cellClickHandler.bind(this)));
         this.cells.forEach(cell => cell.addEventListener('touchstart', this.cellClickHandler.bind(this)));
     }
     cellClickHandler(e) {
