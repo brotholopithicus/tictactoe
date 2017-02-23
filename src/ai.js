@@ -2,9 +2,9 @@ import { Action } from './action';
 import { Game } from './game';
 
 export class AI {
-    constructor(intelligence) {
+    constructor(intelligence, game) {
         this.intelligence = intelligence;
-        this.game = {};
+        this.game = game;
     }
     // computes minimax value of a game state
     minimaxValue(state) {
@@ -51,10 +51,8 @@ export class AI {
         let randomCell = freeCells[Math.floor(Math.random() * freeCells.length)];
         let action = new Action(randomCell);
         let next = action.applyTo(this.game.currentState);
-        setTimeout(function() {
-            this.game.ui.insertAt(randomCell, turn);
-            this.game.advanceState(next);
-        }.bind(this), 400);
+        this.game.ui.insertAt(randomCell, turn);
+        this.game.advanceState(next);
     }
     noobMove(turn) {
         let freeCells = this.game.currentState.emptyCells();
@@ -77,10 +75,8 @@ export class AI {
             }
         }
         let nextState = nextAction.applyTo(this.game.currentState);
-        setTimeout(function() {
-            this.game.ui.insertAt(nextAction.pos, turn);
-            this.game.advanceState(nextState);
-        }.bind(this), 400);
+        this.game.ui.insertAt(nextAction.pos, turn);
+        this.game.advanceState(nextState);
     }
     masterMove(turn) {
         let freeCells = this.game.currentState.emptyCells();
@@ -100,15 +96,10 @@ export class AI {
         availableActions.sort(sortMethod);
         let optimalAction = availableActions[0];
         let nextState = optimalAction.applyTo(this.game.currentState);
-        setTimeout(function() {
-            // insert X or O at chosen position in the UI
-            this.game.ui.insertAt(optimalAction.pos, turn);
-            // advance game to next state
-            this.game.advanceState(nextState);
-        }.bind(this), 400);
-    }
-    plays(game) {
-        this.game = game;
+        // insert X or O at chosen position in the UI
+        this.game.ui.insertAt(optimalAction.pos, turn);
+        // advance game to next state
+        this.game.advanceState(nextState);
     }
     notify(turn) {
         switch (this.intelligence) {

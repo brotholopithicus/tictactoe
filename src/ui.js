@@ -21,9 +21,11 @@ export class UI {
     switchViewTo(player) {
         let turn = document.querySelector('.turn');
         let board = document.querySelector('.board');
+        let restartButton = document.querySelector('#restart');
         board.style.opacity = 1;
         if (player === 'won' || player === 'lost' || player === 'draw') {
             board.style.opacity = 0.2;
+            restartButton.disabled = false;
         }
         switch (player) {
             case 'human':
@@ -54,7 +56,7 @@ export class UI {
     }
     insertAt(position, player) {
         let cell = document.querySelector(`div[data-index="${position}"]`);
-        let playerSymbol = player === 'X' ? '✖' : '⭗';
+        let playerSymbol = player === 'X' ? this.game.playerSymbol : this.game.aiSymbol;
         cell.style.color = player === 'X' ? '#00f0ff' : '#ff53ba';
         cell.textContent = playerSymbol;
         cell.classList.add('occupied');

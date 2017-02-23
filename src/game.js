@@ -4,15 +4,16 @@ import { UI } from './ui';
 
 export class Game {
     // constructs the game object ot be played
-    constructor(difficulty) {
+    constructor(difficulty, playerSymbol) {
         if (typeof difficulty !== 'string') difficulty = difficulty.toString();
         if (!['easy', 'normal', 'hard'].includes(difficulty)) difficulty = 'easy';
-        this.aiPlayer = new AI(difficulty);
-        this.aiPlayer.plays(this);
+        this.aiPlayer = new AI(difficulty, this);
         this.currentState = new State();
         this.currentState.board = ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'];
         this.currentState.turn = 'X';
         this.status = 'start';
+        this.playerSymbol = playerSymbol;
+        this.aiSymbol = playerSymbol === '✖' ? '⭗' : '✖';
         this.ui = new UI(this);
     }
     // advance game to new state

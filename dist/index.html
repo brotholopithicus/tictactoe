@@ -8,7 +8,14 @@
 </head>
 
 <body>
-    <div class="main">
+    <div class="chooseSymbol">
+        <p>Choose Your Symbol</p>
+        <div class="symbols">
+            <span data-symbol="X">✖</span>
+            <span data-symbol="O">⭗</span>
+        </div>
+    </div>
+    <div class="main" style="display: none;">
         <div class="board">
             <div data-index="0" class="cell"></div>
             <div data-index="1" class="cell"></div>
@@ -21,7 +28,7 @@
             <div data-index="8" class="cell"></div>
         </div>
         <div class="turn"></div>
-        <button id="restart">Replay</button>
+        <button id="restart" disabled>Replay</button>
     </div>
     <script src="bundle.js"></script>
 </body>
