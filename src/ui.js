@@ -7,6 +7,7 @@ export class UI {
     }
     addClickListeners() {
         this.cells.forEach(cell => cell.addEventListener('mousedown', this.cellClickHandler.bind(this)));
+        this.cells.forEach(cell => cell.addEventListener('touchstart', this.cellClickHandler.bind(this)));
     }
     cellClickHandler(e) {
         if (this.game.status === 'running' && this.game.currentState.turn === 'X' && !e.target.classList.contains('occupied')) {
