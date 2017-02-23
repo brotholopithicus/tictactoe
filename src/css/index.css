@@ -8,19 +8,10 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: #042d41;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-family: 'Righteous';
 }
 
@@ -42,19 +33,10 @@ button:disabled {
 }
 
 .main {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .turn {
@@ -76,7 +58,6 @@ button:disabled {
     line-height: 96px;
     font-size: 100px;
     text-align: center;
-    -webkit-transition: all 0.4s;
     transition: all 0.4s;
 }
 
@@ -90,19 +71,10 @@ button:disabled {
 
 .chooseSymbol, .chooseDifficulty {
     text-align: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-size: 44px;
 }
 
@@ -111,7 +83,6 @@ button:disabled {
 }
 
 .symbols span, .difficulties span {
-    -webkit-transition: 0.4s;
     transition: 0.4s;
     cursor: pointer;
 }
