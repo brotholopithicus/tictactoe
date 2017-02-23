@@ -6,7 +6,7 @@ restartButton.addEventListener('touchstart', restartGame);
 
 let symbols = document.querySelectorAll('.symbols span');
 symbols.forEach(symbol => symbol.addEventListener('click', symbolClickHandler));
-symbols.forEach(symbol => symbol.addEventListener('touchstart', symbolClickHandler));
+symbols.forEach(symbol => symbol.addEventListener('touchend', symbolClickHandler));
 
 function symbolClickHandler(e) {
     // symbol = e.target.dataset.symbol === 'X' ? '✖' : '⭗';
