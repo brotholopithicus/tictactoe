@@ -4,7 +4,7 @@
 }
 
 body {
-    height: 70vh;
+    height: 100vh;
     margin: 0px;
     padding: 0px;
     background-color: #042d41;
@@ -33,7 +33,6 @@ button:disabled {
 }
 
 .main {
-    min-height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
