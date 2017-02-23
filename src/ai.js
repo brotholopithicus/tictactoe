@@ -78,6 +78,30 @@ export class AI {
         this.game.ui.insertAt(nextAction.pos, turn);
         this.game.advanceState(nextState);
     }
+    hardMove(turn) {
+        let freeCells = this.game.currentState.emptyCells();
+        let availableActions = freeCells.map(pos => {
+            let action = new Action(pos);
+            let next = action.applyTo(this.game.currentState);
+            action.minimaxVal = this.minimaxValue(next);
+            return action;
+        });
+        let sortMethod = turn === 'X' ? Action.sortDescending : Action.sortAscending;
+        availableActions.sort(sortMethod);
+        let nextAction;
+        if (Math.random() >= 0.25) {
+            nextAction = availableActions[0];
+        } else {
+            if (availableActions.length >= 2) {
+                nextAction = availableActions[1];
+            } else {
+                nextAction = availableActions[0];
+            }
+        }
+        let nextState = nextAction.applyTo(this.game.currentState);
+        this.game.ui.insertAt(nextAction.pos, turn);
+        this.game.advanceState(nextState);
+    }
     masterMove(turn) {
         let freeCells = this.game.currentState.emptyCells();
         // iterate over available moves and calculate the score
@@ -110,6 +134,9 @@ export class AI {
                 this.noobMove(turn);
                 break;
             case 'hard':
+                this.hardMove(turn);
+                break;
+            case 'impossible':
                 this.masterMove(turn);
                 break;
         }

@@ -8,28 +8,33 @@ function requestHandler(req, res) {
     let filePath = 'dist' + req.url;
     if (req.url === '/') filePath = 'dist/index.html';
     let extName = path.extname(filePath);
-    let contentType;
+    console.log(extName);
+    let resHeader;
     switch (extName) {
         case '.html':
-            contentType = 'text/html';
+            resHeader = { 'Content-Type': 'text/html' };
             break;
         case '.js':
-            contentType = 'application/javascript';
+            resHeader = { 'Content-Type': 'application/javascript' };
             break;
         case '.css':
-            contentType = 'text/css';
+            resHeader = { 'Content-Type': 'text/css' };
+            break;
+        default:
+            resHeader = { 'Location': '/' };
             break;
     }
     fs.readFile(filePath, (err, data) => {
         if (err) {
             if (err.code === 'ENOENT') {
                 console.error(`${filePath} does not exist.`);
-                return;
             } else {
                 throw err;
             }
+            res.writeHead(304, resHeader);
+            res.end();
         } else {
-            res.writeHead(200, { 'Content-Type': contentType });
+            res.writeHead(200, resHeader);
             res.write(data);
             res.end();
         }
