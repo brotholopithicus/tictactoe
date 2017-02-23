@@ -9,7 +9,8 @@ symbols.forEach(symbol => symbol.addEventListener('click', symbolClickHandler));
 symbols.forEach(symbol => symbol.addEventListener('touchstart', symbolClickHandler));
 
 function symbolClickHandler(e) {
-    symbol = e.target.dataset.symbol === 'X' ? '✖' : '⭗';
+    // symbol = e.target.dataset.symbol === 'X' ? '✖' : '⭗';
+    symbol = e.target.dataset.symbol === 'X' ? 'X' : 'O';
     document.body.removeChild(document.querySelector('.chooseSymbol'));
     document.querySelector('.main').style.display = '';
     startGame(symbol);

@@ -13,7 +13,8 @@ export class Game {
         this.currentState.turn = 'X';
         this.status = 'start';
         this.playerSymbol = playerSymbol;
-        this.aiSymbol = playerSymbol === '✖' ? '⭗' : '✖';
+        // this.aiSymbol = playerSymbol === '✖' ? '⭗' : '✖';
+        this.aiSymbol = playerSymbol === 'X' ? 'O' : 'X';
         this.ui = new UI(this);
     }
     // advance game to new state
