@@ -69,23 +69,25 @@ button:disabled {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.chooseSymbol {
+.chooseSymbol, .chooseDifficulty {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 34px;
-    color #fff;
+    font-size: 44px;
 }
 
-.symbols span {
-    font-size: 64px;
+.chooseSymbol p, .chooseDifficulty p {
+    border-bottom: 1px solid #000;
+}
+
+.symbols span, .difficulties span {
     transition: 0.4s;
     cursor: pointer;
 }
 
-.symbols span:hover {
+.symbols span:hover, .difficulties span:hover {
     color: rgba(255, 255, 255, 0.28);
 }
 

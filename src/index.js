@@ -1,10 +1,13 @@
 import { Game } from './game';
 import { UI } from './ui';
-
+let difficulty;
 let symbol;
 let symbols = document.querySelectorAll('.symbols span');
-symbols.forEach(symbol => symbol.addEventListener('click', symbolClickHandler));
-symbols.forEach(symbol => symbol.addEventListener('touchstart', symbolTouchHandler));
+symbols.forEach(symbol => {
+    symbol.addEventListener('click', symbolClickHandler);
+    symbol.addEventListener('touchstart', symbolTouchHandler);
+});
+
 
 function symbolTouchHandler(e) {
     e.preventDefault();
@@ -15,12 +18,27 @@ function symbolClickHandler(e) {
     // symbol = e.target.dataset.symbol === 'X' ? '✖' : '⭗';
     symbol = e.target.dataset.symbol === 'X' ? 'X' : 'O';
     document.body.removeChild(document.querySelector('.chooseSymbol'));
-    startGame(symbol);
+    document.querySelector('.chooseDifficulty').style.display = '';
+    let difficulties = document.querySelectorAll('.difficulties span');
+    difficulties.forEach(diff => {
+        diff.addEventListener('click', difficultyClickHandler);
+        diff.addEventListener('touchstart', difficultyTouchHandler);
+    });
 }
 
-function startGame(symbol) {
+function difficultyTouchHandler(e) {
+    e.preventDefault();
+    difficultyClickHandler(e);
+}
+
+function difficultyClickHandler(e) {
+    difficulty = e.target.dataset.diff;
+    document.body.removeChild(document.querySelector('.chooseDifficulty'));
+    startGame();
+}
+
+function startGame() {
     let main = document.querySelector('.main');
-    let difficulty = 'hard';
     let game = new Game(difficulty, symbol);
     if (!main) game.initializeBoard();
     let cells = document.querySelectorAll('.cell');
