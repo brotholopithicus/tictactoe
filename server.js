@@ -20,6 +20,9 @@ function requestHandler(req, res) {
         case '.css':
             resHeader = { 'Content-Type': 'text/css' };
             break;
+	case '.zip':
+		resHeader = { 'Content-Type': 'application/octet-stream' };
+		break;
         default:
             resHeader = { 'Location': '/' };
             break;
