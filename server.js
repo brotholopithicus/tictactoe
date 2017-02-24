@@ -20,14 +20,16 @@ function requestHandler(req, res) {
         case '.css':
             resHeader = { 'Content-Type': 'text/css' };
             break;
-	case '.zip':
-		resHeader = { 'Content-Type': 'application/octet-stream' };
-		break;
+        case '.zip':
+            resHeader = { 'Content-Type': 'application/octet-stream' };
+            break;
         default:
             resHeader = { 'Location': '/' };
             break;
     }
-    fs.readFile(filePath, (err, data) => {
+    let stream = fs.createReadStream(filePath);
+
+    stream.on('error', (err) => {
         if (err) {
             if (err.code === 'ENOENT') {
                 console.error(`${filePath} does not exist.`);
@@ -36,12 +38,11 @@ function requestHandler(req, res) {
             }
             res.writeHead(304, resHeader);
             res.end();
-        } else {
-            res.writeHead(200, resHeader);
-            res.write(data);
-            res.end();
         }
     });
+    
+    res.writeHead(200, resHeader)
+    stream.pipe(res);
 }
 
 server.listen(8080, () => console.log('Server listening at localhost:8080'));
